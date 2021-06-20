@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"github.com/coretrix/hitrix/service/component/workerpool"
 
 	"github.com/coretrix/hitrix/service/component/stripe"
 
@@ -56,6 +57,7 @@ const (
 	SMSService              = "sms"
 	GeneratorService        = "generator_service"
 	MailMandrill            = "mail_mandrill"
+	WorkerPool              = "worker_pool"
 )
 
 type DIInterface interface {
@@ -77,6 +79,7 @@ type DIInterface interface {
 	GeneratorService() (generator.Generator, bool)
 	MailMandrillService() mail.Sender
 	Stripe() (stripe.IStripe, bool)
+	WorkerPool() (workerpool.WorkerPool, bool)
 }
 
 type diContainer struct {
@@ -94,6 +97,14 @@ func (d *diContainer) Stripe() (stripe.IStripe, bool) {
 	v, has := GetServiceOptional(StripeService)
 	if has {
 		return v.(stripe.IStripe), true
+	}
+	return nil, false
+}
+
+func (d *diContainer) WorkerPool() (workerpool.WorkerPool, bool) {
+	v, has := GetServiceOptional(WorkerPool)
+	if has {
+		return v.(workerpool.WorkerPool), true
 	}
 	return nil, false
 }
