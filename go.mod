@@ -33,6 +33,7 @@ require (
 	github.com/magiconair/properties v1.8.4 // indirect
 	github.com/mattbaird/gochimp v0.0.0-20200820164431-f1082bcdf63f
 	github.com/mitchellh/mapstructure v1.4.0 // indirect
+	github.com/panjf2000/ants/v2 v2.4.5 // indirect
 	github.com/pariz/gountries v0.0.0-20200430155801-1c6a393df9c7
 	github.com/pelletier/go-toml v1.8.1 // indirect
 	github.com/ryanuber/columnize v2.1.2+incompatible
